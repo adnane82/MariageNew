@@ -1,0 +1,22 @@
+<form #registerForm="ngForm" (ngSubmit)="register()">
+  <h4 style="font-weight:bold;font-family:'One-Slice';" class="text-center text-dark">Ton partenaire t'attend </h4>
+  <hr>
+
+  <div class="form-group">
+    <input name="username" [(ngModel)]="model.username" type="text" class="form-control" placeholder=" Pseudo">
+  </div>
+
+  <div class="form-group">
+    <input name="password" [(ngModel)]="model.password" type="password" class="form-control"
+      placeholder=" Mot De Passe">
+  </div>
+
+
+  <div class="form-group text-center">
+    <button style="font-weight:bold;font-family:'CHERL___';" class="btn btn-secondary btn-lg mr-4"
+      type="submit">Inscription</button>
+    <button (click)="cancel()" style="font-weight:bold;font-family:'CHERL___';" class="btn btn-secondary btn-lg "
+      type="button"> Plutard</button>
+  </div>
+
+</form>

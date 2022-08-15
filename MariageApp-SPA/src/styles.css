@@ -1,3 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
-@import  "~bootstrap/dist/css/bootstrap.min.css";
+@import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.min.css";
+
+@font-face {
+    font-family: "One-Slice";
+    src: url("./assets/fonts/One-Slice.otf");
+}
+@font-face {
+    font-family: "carolingia";
+    src: url("./assets/fonts/carolingia.ttf");
+}
+@font-face {
+    font-family: "CHERL___";
+    src: url("./assets/fonts/CHERL___.TTF");
+}
+
+
+
+
+
+
