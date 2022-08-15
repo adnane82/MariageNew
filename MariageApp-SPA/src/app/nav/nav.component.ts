@@ -16,7 +16,7 @@ model:any={};
 
     this.authService.login(this.model).subscribe(
       next=>console.log("connexion réussie"),
-      error=>console.log("connexion échoué")
+      error=>console.log(error)
     )
   }
   loggedIn(){
