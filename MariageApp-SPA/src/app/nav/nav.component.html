@@ -1,10 +1,10 @@
 
-<nav class=" navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="  navbar navbar-expand-md navbar-dark bg-primary">
   <a style="margin-top:-10px;color:pink;
 font-family:'carolingia';font-size:2.25rem;font-weight:bolder" class="navbar-brand"
     href="#"><i class="fa fa-heart" aria-hidden="true"></i>Mariage<i class="fa fa-heart" aria-hidden="true"></i></a>
 
-  <ul style="letter-spacing:1px;font-weight:bold;font-family:'carolingia';font-size:1.2rem" class="navbar-nav mr-auto">
+  <ul  *ngIf="loggedIn()" style="letter-spacing:1px;font-weight:bold;font-family:'carolingia';font-size:1.2rem" class="navbar-nav mr-auto">
     <li class="nav-item">
       <a class="nav-link" href="#">Principal </a>
     </li>
@@ -17,23 +17,21 @@ font-family:'carolingia';font-size:2.25rem;font-weight:bolder" class="navbar-bra
     <li class="nav-item">
       <a class="nav-link" href="#">Chat</a>
     </li>
-    <li *ngIf="loggedIn()" class="nav-item">
-      <a class="nav-link" (click)="loggedOut()">Déconnexion</a>
-    </li>
+   
   </ul>
-  <div class="dropdown">
-    <a *ngIf="loggedIn()"   style="letter-spacing:1px;font-weight:bold;font-family:'carolingia';font-size:1.2rem"  class="dropdown-toggle text-light nav-link" >
-     Bienvenue
+  <div dropdown *ngIf="loggedIn()"  class="dropdown">
+    <a dropdownToggle    style="letter-spacing:1px;font-weight:bold;font-family:'carolingia';font-size:1.2rem"  class="dropdown-toggle text-light nav-link" >
+     Bienvenue {{authService.decodedToken?.unique_name | titlecase}} 
     </a>
   
-    <div class="dropdown-menu">
+    <div *dropdownMenu class="dropdown-menu mt-3">
       <a class="dropdown-item">  <i class="fa fa-user-o" aria-hidden="true">  </i>Mon Dossier</a>
       <div class="dropdown divider"></div>
-      <a class="dropdown-item" ><i class="fa fa-sign-out" aria-hidden="true">  </i>Déconexion</a>
+      <a (click)="loggedOut()" class="dropdown-item" ><i class="fa fa-sign-out" aria-hidden="true">  </i>Déconexion</a>
       
     </div>
   </div>
-  <form *ngIf="!loggedIn()" (ngSubmit)="login()"  #LoginForm ="ngForm" class="row g-3 my-2 my-lg-0 " >
+  <form      *ngIf="!loggedIn()" (ngSubmit)="login()"  #LoginForm ="ngForm" class="row mb-3   mr-10 " >
     <div class="col-auto">
       <input name="username" required class="form-control  mr-sm-2" [(ngModel)]="model.username" type="text" placeholder="Pseudo ">
     </div>
@@ -42,7 +40,7 @@ font-family:'carolingia';font-size:2.25rem;font-weight:bolder" class="navbar-bra
     </div>
     <div class="col-auto">
       <button [disabled]="!LoginForm.valid"  style="font-weight:bold;font-family:'CHERI___';font-size:1.0rem"
-        class="btn btn-secondary col-auto my-2 my-sm-0" type="submit">Inscription
+        class="btn btn-secondary col-auto my-2 my-sm-0" type="submit">Connexion
       </button>
     </div>
   

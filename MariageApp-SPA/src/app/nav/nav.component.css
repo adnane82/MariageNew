@@ -12,3 +12,20 @@
     color: black !important;
     background:pink !important
       }
+      .dropdown-toggle,.dropdown-item{
+
+        cursor: pointer;
+      }
+      .mnav-link:hover, .nav-link:focus {
+        text-decoration: none;
+        color: pink !important;
+      } 
+      
+      .mnav-link {
+      color:rgb(159, 71, 71) !important;
+      letter-spacing:0.5px;
+      font-weight:bold;
+      font-family:'JF Flat';
+      font-size:1.0rem
+      }
+      
