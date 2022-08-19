@@ -25,7 +25,7 @@ font-family:'carolingia';font-size:2.25rem;font-weight:bolder" class="navbar-bra
     </a>
   
     <div *dropdownMenu class="dropdown-menu mt-3">
-      <a class="dropdown-item">  <i class="fa fa-user-o" aria-hidden="true">  </i>Mon Dossier</a>
+      <a class="dropdown-item" [routerLink]="['/member/edit']" >  <i class="fa fa-user-o" aria-hidden="true">  </i>Mon Dossier</a>
       <div class="dropdown divider"></div>
       <a (click)="loggedOut()" class="dropdown-item" ><i class="fa fa-sign-out" aria-hidden="true">  </i>Déconexion</a>
       

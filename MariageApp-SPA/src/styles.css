@@ -3,7 +3,7 @@
 @import "~font-awesome/css/font-awesome.min.css";
 @import"../node_modules/alertifyjs/build/css/alertify.rtl.min.css";
 @import "../node_modules/alertifyjs/build/css/themes/bootstrap.rtl.min.css";
-@import "~bootswatch/dist/Lumen/bootstrap.min.css";
+@import "~bootswatch/dist/Flatly/bootstrap.min.css";
 @import url(assets/myStyles.css);
 
 @font-face {
@@ -17,6 +17,10 @@
 @font-face {
     font-family: "CHERL___";
     src: url("./assets/fonts/CHERL___.TTF");
+    @font-face {
+        font-family: "Lemonade-Peach";
+        src: url("./assets/fonts/Lemonade-Peach.otf");
+    }
 }
 
 

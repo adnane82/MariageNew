@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +11,11 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 registerMode : boolean=false;
 values:any;
-  constructor(private  http :HttpClient) { }
+  constructor(private  http :HttpClient,private auService:AuthService, private route:Router) { }
 
   ngOnInit() {
+    if(this.auService.loggeIn())
+    this.route.navigate(['/members'])
    
   }
   registerToggle(){

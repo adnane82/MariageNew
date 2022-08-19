@@ -14,8 +14,8 @@ city:string;
 country:string;
 interests?:string;
 introduction?:string;
-lookingFor?:string;
+lokingFor?:string;
 photos?:Photo[];
 
-
+ 
 }
