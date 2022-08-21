@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using MariageApp.API.Models;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +24,18 @@ namespace MariageApp.API.Data
             _context.Remove(entity);
         }
 
+       public async Task<Photo> GetMainPhotoForUser(int userId)
+        {
+           return await _context.Photos.Where(u=>u.UserId==userId).FirstOrDefaultAsync(p=>p.IsMain);
+           
+        }
+
+        public async Task<Photo> GetPhoto(int Id)
+        {
+            var photo = await _context.Photos.FirstOrDefaultAsync(p=>p.Id==Id);
+            return photo ;
+        }
+
         public async Task<User> GetUser(int Id)
         {
             return await _context.Users.Include(u=>u.Photos).FirstOrDefaultAsync(u=>u.Id==Id);
@@ -35,6 +48,8 @@ namespace MariageApp.API.Data
         public async Task<bool> SaveAll()
         {
             return await _context.SaveChangesAsync()>0;
+
+      
         }
     }
 }

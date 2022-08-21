@@ -11,9 +11,12 @@ import { AuthService } from '../_services/auth.service';
 })
 export class NavComponent implements OnInit {
 model:any={};
+photoUrl:string;
   constructor( public authService:AuthService,private alertify:AlertifyService, private route:Router) { }
 
   ngOnInit() {
+    this.authService.currentPhotoUrl.subscribe(
+      photoUrl =>this.photoUrl=photoUrl);
   }
   login(){
 
@@ -30,6 +33,9 @@ model:any={};
   loggedOut(){
 
     localStorage.removeItem('token');
+    this.authService.decodedToken=null;
+    localStorage.removeItem('user');
+    this.authService.currentUser=null;
     this.alertify.message('déconexion réussi');
     this.route.navigate(['/home']);
   }
