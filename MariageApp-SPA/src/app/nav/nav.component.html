@@ -33,7 +33,7 @@ font-family:'carolingia';font-size:2.25rem;font-weight:bolder" class="navbar-bra
     </div>
   </div>
   <span>
-    <img  *ngIf="loggedIn()"  src="{{photoUrl}}" alt="">
+    <img  *ngIf="loggedIn()"  src="{{photoUrl || 'assets/fonts/User.jpg'}}" alt="">
   </span>
   <form      *ngIf="!loggedIn()" (ngSubmit)="login()"  #LoginForm ="ngForm" class="row mb-3   mr-10 " >
     <div class="col-auto">

@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace MariageApp.API.Dtos
@@ -9,5 +10,23 @@ namespace MariageApp.API.Dtos
         [StringLength(8,MinimumLength =4,ErrorMessage ="Au min 4 lettres et au max 8 lettres")]
         [Required]
         public string  Password { get; set; }
+        [Required]
+        public string Gender { get; set; }
+        [Required]
+        public string KnownAs { get; set; }
+        [Required]
+        public DateTime DateOfBirth { get; set; }
+        [Required]
+        public string City { get; set; }
+        [Required]
+        public string Country { get; set; }
+        public DateTime Created { get; set; }
+        public DateTime LastActive { get; set; }
+        public UserForRegisterDto()
+        {
+            Created = DateTime.Now;
+            LastActive = DateTime.Now;
+            
+        }
     }
 }

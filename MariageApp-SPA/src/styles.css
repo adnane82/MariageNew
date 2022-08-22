@@ -4,6 +4,7 @@
 @import"../node_modules/alertifyjs/build/css/alertify.rtl.min.css";
 @import "../node_modules/alertifyjs/build/css/themes/bootstrap.rtl.min.css";
 @import "~bootswatch/dist/Flatly/bootstrap.min.css";
+@import "~ngx-bootstrap/datepicker/bs-datepicker.css";
 @import url(assets/myStyles.css);
 
 @font-face {

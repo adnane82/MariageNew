@@ -35,12 +35,11 @@ namespace MariageApp.API.Controllers
         {
             userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
             if (await _repo.UserExists(userForRegisterDto.Username)) return BadRequest("L'utilisateur exste déjà");
-            var userToCreate = new User
-            {
-                Username = userForRegisterDto.Username
-            };
+            var userToCreate = _mapper.Map<User>(userForRegisterDto);
+            
             var CreatedUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
-            return StatusCode(201);
+               var userToReturn = _mapper.Map<UserForDetailsDto>(CreatedUser);
+            return CreatedAtRoute("GetUser",new{controller = "Users",id=CreatedUser.Id},userToReturn);
 
 
         }

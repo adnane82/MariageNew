@@ -18,6 +18,7 @@ namespace MariageApp.API.Helpers
             CreateMap<UserForUpdateDto,User>();
             CreateMap<Photo,PhotoForReturnDto>();
             CreateMap<PhotoForCreateDto,Photo>();
+            CreateMap<UserForRegisterDto,User>();
             
         }
     }
