@@ -20,6 +20,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using ZwajApp.API.Helpers;
 
 namespace MariageApp.API
 {
@@ -47,7 +48,8 @@ namespace MariageApp.API
             services.AddAutoMapper();
             services.AddTransient<TrialData>();
             services.AddScoped<IAuthRepository, AuthRepository>();
-              services.AddScoped<IMariageRepository, MariageRepository>();
+            services.AddScoped<IMariageRepository, MariageRepository>();
+            services.AddScoped<LogUserActivity>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).
             AddJwtBearer(
                 Options =>

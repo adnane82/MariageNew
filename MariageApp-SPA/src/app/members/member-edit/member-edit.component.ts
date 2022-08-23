@@ -15,6 +15,8 @@ export class MemberEditComponent implements OnInit {
   @ViewChild ('editForm') editForm:NgModel
   user:User
   photoUrl:string;
+  created:string;
+  options :  Intl.DateTimeFormatOptions = {weekday : 'long' , year :'numeric' , month : 'long',day:'numeric'};
   @HostListener('window:beforeunload',['$event'])
   unLoadNotification($event:any){
     if(this.editForm.dirty){
@@ -31,6 +33,7 @@ export class MemberEditComponent implements OnInit {
       this.user=data['user'];
     });
     this.authService.currentPhotoUrl.subscribe(photoUrl=>this.photoUrl=photoUrl);
+    this.created = new Date(this.user.created).toLocaleString('fr-EG', this.options);
 
   }
   updateUser() {

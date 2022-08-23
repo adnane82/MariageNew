@@ -12,6 +12,13 @@ import { UserService } from 'src/app/_services/user.service';
 })
 export class MemberDetailComponent implements OnInit {
   user:User
+  created:string;
+  age:string;
+  showIntro:boolean=true;
+  showLook:boolean=true;
+  showIntersts:boolean=true;
+   options :  Intl.DateTimeFormatOptions = {weekday : 'long' , year :'numeric' , month : 'long',day:'numeric'};
+
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
 
@@ -28,6 +35,11 @@ export class MemberDetailComponent implements OnInit {
     }]
 
     this.galleryImages=this.getImages();
+    this.created = new Date(this.user.created).toLocaleString('fr-EG', this.options);
+    this.showIntro=true;
+    this.showLook=true;
+    this.showIntersts=true;
+
 
   }
   getImages(){

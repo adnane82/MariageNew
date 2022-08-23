@@ -7,9 +7,11 @@ using MariageApp.API.Data;
 using MariageApp.API.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ZwajApp.API.Helpers;
 
 namespace MariageApp.API.Controllers
-{
+{ 
+    [ServiceFilter(typeof(LogUserActivity))]
     [Authorize]
     [Route("api/users/")]
     [ApiController]

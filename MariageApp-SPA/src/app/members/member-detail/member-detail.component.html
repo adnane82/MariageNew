@@ -6,7 +6,7 @@
         <div class="card-body">
           <div>
             <strong> Résidance </strong>
-            <p>{{user.country}},{{user.city}}</p>
+            <p>{{user.country}}--{{user.city}}</p>
           </div>
           <div>
             <strong>Age </strong>
@@ -14,11 +14,11 @@
           </div>
           <div>
             <strong>Dérnière apparution  </strong>
-            <p>{{user.lastActive}}</p>
+            <p>{{user.lastActive | timeAgo}}</p>
           </div>
           <div>
-            <strong> Inscrit depuis</strong>
-            <p>{{user.created}}</p>
+            <strong> Inscrit depuis Le</strong>
+            <p>{{created }}</p>
           </div>
         </div>
         <div class="card-footer">
@@ -38,8 +38,11 @@
                     <h4>Présentation </h4>
                   </div>
                   <div class="card-text mt-3 p-2">
-                    <p>{{user.introduction}}</p>
+                    <p #intro>{{user.introduction | slice:0:200}}</p>
+                   
                   </div>
+                  <button [hidden]='!showIntro' class="btn btn-primary" (click)="intro.innerText = user.introduction;showIntro=false;"> Voir plus</button>
+                  <button [hidden]='showIntro' class="btn btn-danger" (click)="intro.innerText = user.introduction.slice(0,200);showIntro=true;">Dézoomer</button>
             </div>
             
             <div class="card mt-4">
@@ -47,8 +50,11 @@
                     <h4> Je cherche</h4>
                   </div>
                   <div class="card-text mt-3 p-2">
-                    <p>{{user.lokingFor}}</p>
+                    <p #look>{{user.lokingFor | slice:0:200}}</p>
+                   
                   </div>
+                  <button [hidden]='!showLook' class="btn btn-primary" (click)="look.innerText = user.lokingFor;showLook=false;"> Voir plus</button>
+                  <button [hidden]='showLook' class="btn btn-danger" (click)="look.innerText = user.lokingFor.slice(0,200);showLook=true;">Dézoomer</button>
             </div>
 
             
@@ -62,8 +68,10 @@
                   <h4>Mes centre d'interets</h4>
                 </div>
                 <div class="card-text mt-3 p-2">
-                    <p>{{user.interests}}</p>
+                    <p #inter>{{user.interests | slice:0:200}}</p>
                 </div>
+                <button [hidden]='!showIntersts' class="btn btn-primary" (click)="inter.innerText = user.interests;showIntersts=false;"> Voir plus</button>
+                <button [hidden]='showIntersts' class="btn btn-danger" (click)="inter.innerText = user.interests.slice(0,200);showIntersts=true;">Dézoomer</button>
           </div>
       </tab>
 

@@ -11,6 +11,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 
 
 import { NavComponent } from './nav/nav.component';
+import {TimeAgoPipe} from 'time-ago-pipe';
 
 import { AuthService } from './_services/auth.service';
 import { HomeComponent } from './home/home.component';
@@ -52,7 +53,8 @@ export function tokenGetter() {
       MemberCardComponent,
       MemberDetailComponent,
       MemberEditComponent,
-      PhotoEditorComponent
+      PhotoEditorComponent,
+      TimeAgoPipe
    ],
   imports: [
     BrowserModule,
