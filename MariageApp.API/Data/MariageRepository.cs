@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MariageApp.API.Models;
 using Microsoft.EntityFrameworkCore;
+using ZwajApp.API.Helpers;
 
 namespace MariageApp.API.Data
 {
@@ -41,9 +43,30 @@ namespace MariageApp.API.Data
             return await _context.Users.Include(u=>u.Photos).FirstOrDefaultAsync(u=>u.Id==Id);
         }
 
-        public async Task<IEnumerable<User>> GetUsers()
+        public async Task<PagedList<User>> GetUsers( UserParams userParams)
         {
-           return await _context.Users.Include(u=>u.Photos).ToListAsync();        }
+           var users=  _context.Users.Include(u=>u.Photos).OrderByDescending(u=>u.LastActive).AsQueryable();  
+            users = users.Where(u=>u.Id!=userParams.UserId);
+            users = users.Where(u=>u.Gender==userParams.Gender);
+             if(userParams.MinAge!=18||userParams.MaxAge!=99){
+               var minDob = DateTime.Today.AddYears(-userParams.MaxAge-1);
+               var maxDob = DateTime.Today.AddYears(-userParams.MinAge);
+               users = users.Where(u=>u.DateOfBirth>=minDob && u.DateOfBirth<=maxDob);
+           }
+            if(!string.IsNullOrEmpty(userParams.OrderBy)){
+               switch (userParams.OrderBy)
+               {
+                   case "created":
+                   users=users.OrderByDescending(u=>u.Created);
+                   break;
+                   default:
+                   users= users.OrderByDescending(u=>u.LastActive);
+                   break;
+               }
+           }
+
+           return await PagedList<User>.CreateAsync(users,userParams.PageNumber,userParams.PageSize);     
+        }
 
         public async Task<bool> SaveAll()
         {
